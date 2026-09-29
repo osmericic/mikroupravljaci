@@ -3,93 +3,96 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Poglavlje 3 - Zadatak 11 | Arduino kroz jednostavne primjere</title>
+<title>11. Semafor s RGB diodom | Arduino kroz jednostavne primjere</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 <header class="topbar">
-  <button class="menu-btn" id="menuBtn" aria-controls="sidebar" aria-expanded="false">Sadržaj</button>
+  <button class="menu-btn" id="menuBtn" aria-controls="sidebar" aria-expanded="false"><span></span><span></span><span></span><b>Izbornik</b></button>
   <a class="brand" href="../index.html">
-    <span class="brand-title">Arduino kroz jednostavne primjere</span>
-    <span class="brand-sub">Mikroupravljači · Tehnička škola Slavonski Brod</span>
+    <span class="brand-mark">MU</span>
+    <span class="brand-text"><span class="brand-title">Arduino kroz jednostavne primjere</span>
+    <span class="brand-sub">Mikroupravljači · Tehnička škola Slavonski Brod</span></span>
   </a>
 </header>
 <div class="layout">
 <nav class="sidebar" id="sidebar" aria-label="Sadržaj">
-<a class="nav-home" href="../index.html">Predgovor</a>
-<details class="nav-chapter"><summary>Poglavlje 2 <span class="count">1</span></summary><ul>
-<li><a href="p2-s1.html">Arduino izvodi</a></li>
+<div class="search"><input type="search" id="navSearch" placeholder="Traži zadatak ili broj…" aria-label="Traži zadatak"></div>
+<a class="nav-home" href="../index.html">Predgovor i sadržaj</a>
+<details class="nav-chapter"><summary><span class="ch-no">2</span>Arduino pločica</summary><ul>
+<li><a href="p2-s1.html"><span class="t">Arduino UNO – izvodi</span></a></li>
 </ul></details>
-<details class="nav-chapter" open><summary>Poglavlje 3 <span class="count">13</span></summary><ul>
-<li><a href="p3-z1.html">Zadatak 1</a></li>
-<li><a href="p3-z2.html">Zadatak 2</a></li>
-<li><a href="p3-z3.html">Zadatak 3</a></li>
-<li><a href="p3-z4.html">Zadatak 4</a></li>
-<li><a href="p3-z5.html">Zadatak 5</a></li>
-<li><a href="p3-z6.html">Zadatak 6</a></li>
-<li><a href="p3-z7.html">Zadatak 7</a></li>
-<li><a href="p3-z8.html">Zadatak 8</a></li>
-<li><a href="p3-z9.html">Zadatak 9</a></li>
-<li><a href="p3-z10.html">Zadatak 10</a></li>
-<li><a class="is-current" aria-current="page" href="p3-z11.html">Zadatak 11</a></li>
-<li><a href="p3-z12.html">Zadatak 12</a></li>
-<li><a href="p3-z13.html">Zadatak 13</a></li>
+<details class="nav-chapter" open><summary><span class="ch-no">3</span>Svjetleće diode</summary><ul>
+<li><a href="p3-z1.html"><span class="n">1.</span><span class="t">Blinkanje LED diode</span></a></li>
+<li><a href="p3-z2.html"><span class="n">2.</span><span class="t">Dvije diode blinkaju zajedno</span></a></li>
+<li><a href="p3-z3.html"><span class="n">3.</span><span class="t">Naizmjenično blinkanje</span></a></li>
+<li><a href="p3-z4.html"><span class="n">4.</span><span class="t">Trčeće svjetlo</span></a></li>
+<li><a href="p3-z5.html"><span class="n">5.</span><span class="t">Trčeća tama</span></a></li>
+<li><a href="p3-z6.html"><span class="n">6.</span><span class="t">Semafor za automobile</span></a></li>
+<li><a href="p3-z7.html"><span class="n">7.</span><span class="t">Semafor za automobile i pješake</span></a></li>
+<li><a href="p3-z8.html"><span class="n">8.</span><span class="t">Pet dioda – izvana prema unutra</span></a></li>
+<li><a href="p3-z9.html"><span class="n">9.</span><span class="t">RGB dioda – redom boje</span></a></li>
+<li><a href="p3-z10.html"><span class="n">10.</span><span class="t">RGB dioda – miješanje boja</span></a></li>
+<li><a class="is-current" aria-current="page" href="p3-z11.html"><span class="n">11.</span><span class="t">Semafor s RGB diodom</span></a></li>
+<li><a href="p3-z12.html"><span class="n">12.</span><span class="t">Sedmosegmentni – trčanje segmenata</span></a></li>
+<li><a href="p3-z13.html"><span class="n">13.</span><span class="t">Sedmosegmentni – brojevi 1 do 3</span></a></li>
 </ul></details>
-<details class="nav-chapter"><summary>Poglavlje 4 <span class="count">9</span></summary><ul>
-<li><a href="p4-z14.html">Zadatak 14</a></li>
-<li><a href="p4-z15.html">Zadatak 15</a></li>
-<li><a href="p4-z16.html">Zadatak 16</a></li>
-<li><a href="p4-z17.html">Zadatak 17</a></li>
-<li><a href="p4-z18.html">Zadatak 18</a></li>
-<li><a href="p4-z19.html">Zadatak 19</a></li>
-<li><a href="p4-z20.html">Zadatak 20</a></li>
-<li><a href="p4-z21.html">Zadatak 21</a></li>
-<li><a href="p4-z22.html">Zadatak 22</a></li>
+<details class="nav-chapter"><summary><span class="ch-no">4</span>Tipkala i sklopke</summary><ul>
+<li><a href="p4-z14.html"><span class="n">14.</span><span class="t">Tipkalo uključuje diodu</span></a></li>
+<li><a href="p4-z15.html"><span class="n">15.</span><span class="t">Tipkalo isključuje diodu</span></a></li>
+<li><a href="p4-z16.html"><span class="n">16.</span><span class="t">Uključi i isključi s dva tipkala</span></a></li>
+<li><a href="p4-z17.html"><span class="n">17.</span><span class="t">Trčeće svjetlo lijevo i desno</span></a></li>
+<li><a href="p4-z18.html"><span class="n">18.</span><span class="t">Sklopka i dvije diode</span></a></li>
+<li><a href="p4-z19.html"><span class="n">19.</span><span class="t">Logička funkcija I</span></a></li>
+<li><a href="p4-z20.html"><span class="n">20.</span><span class="t">Logička funkcija ILI</span></a></li>
+<li><a href="p4-z21.html"><span class="n">21.</span><span class="t">Promjena stanja tipkalom</span></a></li>
+<li><a href="p4-z22.html"><span class="n">22.</span><span class="t">Klima-uređaj</span></a></li>
 </ul></details>
-<details class="nav-chapter"><summary>Poglavlje 5 <span class="count">2</span></summary><ul>
-<li><a href="p5-z23.html">Zadatak 23</a></li>
-<li><a href="p5-z24.html">Zadatak 24</a></li>
+<details class="nav-chapter"><summary><span class="ch-no">5</span>Mali projekti</summary><ul>
+<li><a href="p5-z23.html"><span class="n">23.</span><span class="t">Elektronička kockica</span></a></li>
+<li><a href="p5-z24.html"><span class="n">24.</span><span class="t">Dizalo</span></a></li>
 </ul></details>
-<details class="nav-chapter"><summary>Poglavlje 6 <span class="count">9</span></summary><ul>
-<li><a href="p6-z25.html">Zadatak 25</a></li>
-<li><a href="p6-z26.html">Zadatak 26</a></li>
-<li><a href="p6-z27.html">Zadatak 27</a></li>
-<li><a href="p6-z28.html">Zadatak 28</a></li>
-<li><a href="p6-z29.html">Zadatak 29</a></li>
-<li><a href="p6-z30.html">Zadatak 30</a></li>
-<li><a href="p6-z31.html">Zadatak 31</a></li>
-<li><a href="p6-z32.html">Zadatak 32</a></li>
-<li><a href="p6-z33.html">Zadatak 33</a></li>
+<details class="nav-chapter"><summary><span class="ch-no">6</span>PWM i zvuk</summary><ul>
+<li><a href="p6-z25.html"><span class="n">25.</span><span class="t">Dvije diode – 20 % i 80 %</span></a></li>
+<li><a href="p6-z26.html"><span class="n">26.</span><span class="t">Postupno paljenje diode</span></a></li>
+<li><a href="p6-z27.html"><span class="n">27.</span><span class="t">Postupno paljenje i gašenje</span></a></li>
+<li><a href="p6-z28.html"><span class="n">28.</span><span class="t">Paljenje i gašenje dviju dioda</span></a></li>
+<li><a href="p6-z29.html"><span class="n">29.</span><span class="t">Dimmer s tipkalima</span></a></li>
+<li><a href="p6-z30.html"><span class="n">30.</span><span class="t">RGB dioda – zadana boja</span></a></li>
+<li><a href="p6-z31.html"><span class="n">31.</span><span class="t">RGB dimmer sa šest tipkala</span></a></li>
+<li><a href="p6-z32.html"><span class="n">32.</span><span class="t">Zujalica – ton 1 kHz</span></a></li>
+<li><a href="p6-z33.html"><span class="n">33.</span><span class="t">Klavir s osam tipkala</span></a></li>
 </ul></details>
-<details class="nav-chapter"><summary>Poglavlje 7 <span class="count">3</span></summary><ul>
-<li><a href="p7-z34.html">Zadatak 34</a></li>
-<li><a href="p7-z35.html">Zadatak 35</a></li>
-<li><a href="p7-z36.html">Zadatak 36</a></li>
+<details class="nav-chapter"><summary><span class="ch-no">7</span>Serijska komunikacija</summary><ul>
+<li><a href="p7-z34.html"><span class="n">34.</span><span class="t">Poruka na računalo</span></a></li>
+<li><a href="p7-z35.html"><span class="n">35.</span><span class="t">Stanje tipkala na računalo</span></a></li>
+<li><a href="p7-z36.html"><span class="n">36.</span><span class="t">Proizvodna traka</span></a></li>
 </ul></details>
-<details class="nav-chapter"><summary>Poglavlje 8 <span class="count">8</span></summary><ul>
-<li><a href="p8-z37.html">Zadatak 37</a></li>
-<li><a href="p8-z38.html">Zadatak 38</a></li>
-<li><a href="p8-z39.html">Zadatak 39</a></li>
-<li><a href="p8-z40.html">Zadatak 40</a></li>
-<li><a href="p8-z41.html">Zadatak 41</a></li>
-<li><a href="p8-z42.html">Zadatak 42</a></li>
-<li><a href="p8-z43.html">Zadatak 43</a></li>
-<li><a href="p8-z44.html">Zadatak 44</a></li>
+<details class="nav-chapter"><summary><span class="ch-no">8</span>Analogni ulazi</summary><ul>
+<li><a href="p8-z37.html"><span class="n">37.</span><span class="t">Potenciometar – očitanje</span></a></li>
+<li><a href="p8-z38.html"><span class="n">38.</span><span class="t">Potenciometar i jačina diode</span></a></li>
+<li><a href="p8-z39.html"><span class="n">39.</span><span class="t">RGB dioda s tri potenciometra</span></a></li>
+<li><a href="p8-z40.html"><span class="n">40.</span><span class="t">Brzina trčećeg svjetla</span></a></li>
+<li><a href="p8-z41.html"><span class="n">41.</span><span class="t">LED voltmetar</span></a></li>
+<li><a href="p8-z42.html"><span class="n">42.</span><span class="t">Fotootpornik – očitanje</span></a></li>
+<li><a href="p8-z43.html"><span class="n">43.</span><span class="t">Automatsko svjetlo</span></a></li>
+<li><a href="p8-z44.html"><span class="n">44.</span><span class="t">Fotootpornik i jačina diode</span></a></li>
 </ul></details>
-<details class="nav-chapter"><summary>Poglavlje 9 <span class="count">2</span></summary><ul>
-<li><a href="p9-z45.html">Zadatak 45</a></li>
-<li><a href="p9-z46.html">Zadatak 46</a></li>
+<details class="nav-chapter"><summary><span class="ch-no">9</span>Završni projekti</summary><ul>
+<li><a href="p9-z45.html"><span class="n">45.</span><span class="t">Semafor sa zujalicom</span></a></li>
+<li><a href="p9-z46.html"><span class="n">46.</span><span class="t">Svjetlosni instrument</span></a></li>
 </ul></details>
-</nav>
+<p class="no-results" hidden>Nema rezultata.</p></nav>
 <main class="main">
 <article class="article">
-<header class="article-head"><p class="eyebrow">Poglavlje 3</p><h1>Zadatak 11</h1><div class="downloads"><a class="dl" href="fzz/321-322-323-RGB.fzz" download><img src="images/fzz-icon.png" alt=""><span><b>Shema spajanja</b>Fritzing (.fzz)</span></a><a class="dl" href="ino/K323.ino" download><img src="images/ino-icon.png" alt=""><span><b>Programski kod</b>Arduino (.ino)</span></a></div></header>
+<header class="article-head"><p class="eyebrow">Poglavlje 3 · Svjetleće diode · Zadatak 11</p><h1>11. Semafor s RGB diodom</h1><div class="downloads"><a class="dl" href="fzz/321-322-323-RGB.fzz" download><img src="images/fzz-icon.png" alt=""><span><b>Shema spajanja</b>Fritzing .fzz</span></a></div></header>
 <p class="task">Na mikrokontroler spojite jednu RGB diodu. Napišite programski kôd koji će realizirati semafor za automobile kao u zadatku 6 pomoću samo jedne RGB diode. Semafor radi na sljedeći način: na početku svijetli crveno svjetlo tri sekunde, potom samo žuto jednu sekundu, potom zeleno tri sekunde te na kraju samo žuto jednu sekundu, nakon čega ciklus kreće ispočetka. Za dobivanje žutog svjetla iskoristite kombinaciju crvenog i zelenog svjetla RGB diode.</p>
-<p><span class="title">SHEMA:</span><br />
-  <img class="shem" width="466" src="images/3-20.png" /><br />
-  <span class="title">EKSPERIMENTALNA PLOČICA:</span><br />
-  <img class="shem" width="966" src="images/3-21.png" /><br />
-  <span class="title">RJEŠENJE:</span></p>
+<p><span class="title">Shema spajanja</span><img class="shem" loading="lazy" alt="" width="466" src="images/3-20.png" />
+  <span class="title">Eksperimentalna pločica</span><img class="shem" loading="lazy" alt="" width="966" src="images/3-21.png" />
+  <span class="title">Rješenje</span></p>
 <p>
 <div id="source">
 <pre>
@@ -121,8 +124,8 @@
 </div>
 </p>
 </article>
-<nav class="pager"><a class="prev" href="p3-z10.html"><span>Prethodno</span>Poglavlje 3 · Zadatak 10</a><a class="next" href="p3-z12.html"><span>Sljedeće</span>Poglavlje 3 · Zadatak 12</a></nav>
-<footer class="footer">Autor: <a href="http://paolozenzerovic.info" target="_blank" rel="noopener">Paolo Zenzerović</a></footer>
+<nav class="pager"><a class="prev" href="p3-z10.html"><span>Prethodni</span>10. RGB dioda – miješanje boja</a><a class="next" href="p3-z12.html"><span>Sljedeći</span>12. Sedmosegmentni – trčanje segmenata</a></nav>
+<footer class="footer">Zadaci, sheme i rješenja: <a href="http://paolozenzerovic.info" target="_blank" rel="noopener">Paolo Zenzerović</a>, <i>Arduino kroz jednostavne primjere</i></footer>
 </main>
 </div>
 <div class="backdrop" id="backdrop"></div>
