@@ -139,6 +139,24 @@ h1, .h1 { margin: 0; font-size: 36px; line-height: 1.2; font-weight: 700; color:
 .tbl td { border: 1px solid var(--line-strong); padding: 6px 14px; text-align: center; }
 .tbl tr:first-child td { background: var(--panel); font-weight: 600; }
 
+/* Podatkovne tablice i slike pločice (stranica Dasduino CORE) */
+.article h3 { margin: 28px 0 10px; font-size: 19px; color: var(--text); }
+.table-scroll { overflow-x: auto; margin: 8px 0 16px; }
+table.data { border-collapse: collapse; width: 100%; font-size: 16.5px; line-height: 1.45; }
+table.data th, table.data td { border: 1px solid var(--line-strong); padding: 7px 12px; text-align: left; vertical-align: top; }
+table.data th { background: var(--panel); font-weight: 600; }
+table.data tr > th:first-child { white-space: nowrap; }
+table.data td:first-child { white-space: nowrap; font-weight: 600; }
+table.data tr:first-child th { white-space: nowrap; }
+table.pinrow td { text-align: center; font: 600 14px var(--mono); padding: 6px 6px; font-weight: 600; }
+table.pinrow th { width: 1%; }
+@media (max-width: 640px) { table.data:not(.pinrow) td:last-child { min-width: 15em; } }
+figure.board { margin: 8px 0 20px; }
+figure.board .shem { margin: 0; }
+figure.board figcaption { margin-top: 6px; font-size: 15px; color: var(--muted); }
+.article ol[type="a"] li { margin: 6px 0; }
+code.url { display: inline-block; max-width: 100%; overflow-wrap: anywhere; font-size: 14px; background: var(--panel); padding: 2px 6px; border-radius: 4px; }
+
 /* ---------- Naslovnica ---------- */
 .toc .lead { margin: 8px 0 28px; color: var(--muted); font-size: 19px; max-width: 720px; }
 .toc-grid { columns: 2 380px; column-gap: 40px; }

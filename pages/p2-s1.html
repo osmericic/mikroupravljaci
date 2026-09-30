@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Arduino UNO – izvodi | Arduino kroz jednostavne primjere</title>
+<title>Dasduino CORE – izvodi | Arduino kroz jednostavne primjere</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
@@ -22,8 +22,8 @@
 <nav class="sidebar" id="sidebar" aria-label="Sadržaj">
 <div class="search"><input type="search" id="navSearch" placeholder="Traži zadatak ili broj…" aria-label="Traži zadatak"></div>
 <a class="nav-home" href="../index.html">Predgovor i sadržaj</a>
-<details class="nav-chapter" open><summary><span class="ch-no">2</span>Arduino pločica</summary><ul>
-<li><a class="is-current" aria-current="page" href="p2-s1.html"><span class="t">Arduino UNO – izvodi</span></a></li>
+<details class="nav-chapter" open><summary><span class="ch-no">2</span>Dasduino CORE pločica</summary><ul>
+<li><a class="is-current" aria-current="page" href="p2-s1.html"><span class="t">Dasduino CORE – izvodi</span></a></li>
 </ul></details>
 <details class="nav-chapter"><summary><span class="ch-no">3</span>Svjetleće diode</summary><ul>
 <li><a href="p3-z1.html"><span class="n">1.</span><span class="t">Blinkanje LED diode</span></a></li>
@@ -88,10 +88,144 @@
 <p class="no-results" hidden>Nema rezultata.</p></nav>
 <main class="main">
 <article class="article">
-<header class="article-head"><p class="eyebrow">Poglavlje 2 · Arduino pločica</p><h1>Arduino UNO – izvodi</h1></header>
-<p>
+<header class="article-head"><p class="eyebrow">Poglavlje 2 · Dasduino CORE pločica</p><h1>Dasduino CORE – izvodi</h1></header>
+<p class="task">Na vježbama koristimo pločicu <b>Dasduino CORE</b> hrvatske tvrtke Soldered. Ima isti mikroupravljač kao Arduino UNO (ATmega328P na 16 MHz) i iste brojeve izvoda, pa svi programi iz ove zbirke rade bez izmjena. Manja je, ima USB-C priključak i može se utaknuti izravno u eksperimentalnu pločicu.</p>
 
-<img class="shem" loading="lazy" alt="" width="900" src="images/2-12.png" /></p>
+<h2 class="title">Izgled pločice</h2>
+<figure class="board">
+  <img class="shem" loading="lazy" src="images/dasduino-core-gore.jpg" width="753" alt="Dasduino CORE, gornja strana s oznakama izvoda">
+  <figcaption>Gornja strana. Lijevo su USB-C priključak, tipke USER i RESET, priključak easyC i priključak za bateriju; desno je mikroupravljač ATmega328P.</figcaption>
+</figure>
+<figure class="board">
+  <img class="shem" loading="lazy" src="images/dasduino-core-dolje.jpg" width="767" alt="Dasduino CORE, donja strana">
+  <figcaption>Donja strana. Oznake izvoda otisnute su i ovdje, pa se lakše snalazite kad je pločica okrenuta.</figcaption>
+</figure>
+
+<h2 class="title">Osnovni podaci</h2>
+<div class="table-scroll"><table class="data">
+  <tr><th>Mikroupravljač</th><td>ATmega328P (isti kao na Arduino UNO)</td></tr>
+  <tr><th>Takt</th><td>16 MHz, kvarcni kristal</td></tr>
+  <tr><th>Radni napon</th><td>5 V (s USB-a)</td></tr>
+  <tr><th>Memorija</th><td>Flash 32 KB (od toga 0,5 KB zauzima bootloader), SRAM 2 KB, EEPROM 1 KB</td></tr>
+  <tr><th>Izvodi</th><td>22: digitalni D0 – D13 i analogni A0 – A7. A6 i A7 su samo analogni ulazi.</td></tr>
+  <tr><th>PWM izlazi</th><td>D3, D5, D6, D9, D10, D11 (na rasporedu izvoda označeni valovitom crtom)</td></tr>
+  <tr><th>Struja izvoda</th><td>preporučeno najviše 20 mA po izvodu, apsolutni maksimum 40 mA</td></tr>
+  <tr><th>USB</th><td>USB-C; USB-UART pretvarač CH340C; osigurač 500 mA</td></tr>
+  <tr><th>Baterija</th><td>priključak za Li-ion bateriju 3,7 V i punjač TP4056 (puni strujom oko 400 mA)</td></tr>
+  <tr><th>Stabilizator</th><td>3,3 V za module koji rade na 3,3 V</td></tr>
+  <tr><th>Komunikacija</th><td>UART, SPI, I²C (i preko priključka easyC)</td></tr>
+  <tr><th>Dimenzije</th><td>63 × 22 mm, 12 g</td></tr>
+</table></div>
+
+<h2 class="title">Raspored izvoda</h2>
+<figure class="board">
+  <a href="images/dasduino-core-raspored.jpg" target="_blank" rel="noopener"><img class="shem" loading="lazy" src="images/dasduino-core-raspored.jpg" width="1800" alt="Raspored izvoda Dasduino CORE s funkcijama svakog izvoda"></a>
+  <figcaption>Raspored izvoda s funkcijama. Kliknite na sliku za prikaz u punoj veličini. Izvor: Soldered Electronics, licenca CC BY-SA 4.0.</figcaption>
+</figure>
+
+<p>Izvodi su u dva reda po 15. Kad je USB-C priključak lijevo, a oznake okrenute prema vama, redovi izgledaju ovako:</p>
+<div class="table-scroll"><table class="data pinrow">
+  <tr><th>Gornji red</th><td>BAT</td><td>VCC</td><td>GND</td><td>3V3</td><td>RESET</td><td>D6</td><td>D7</td><td>D8</td><td>D9</td><td>D10</td><td>D13</td><td>D11</td><td>D12</td><td>TXD</td><td>RXD</td></tr>
+  <tr><th>Donji red</th><td>GND</td><td>D5</td><td>D4</td><td>D3</td><td>D2</td><td>A6</td><td>A7</td><td>GND</td><td>VCC</td><td>A0</td><td>A1</td><td>A2</td><td>A3</td><td>A5</td><td>A4</td></tr>
+</table></div>
+<p>Za razliku od Arduina UNO, izvodi nisu poredani redom brojeva. Prije spajanja uvijek pročitajte oznaku uz izvod.</p>
+
+<h3>Izvodi za napajanje</h3>
+<div class="table-scroll"><table class="data">
+  <tr><th>Izvod</th><th>Opis</th></tr>
+  <tr><td>VCC</td><td>Napajanje mikroupravljača. Kad je spojen USB, na njemu je 5 V. Kad pločica radi samo s baterije, na njemu je približno napon baterije (3,7 – 4,2 V).</td></tr>
+  <tr><td>3V3</td><td>Izlaz stabilizatora 3,3 V. Služi za napajanje senzora i modula koji rade na 3,3 V.</td></tr>
+  <tr><td>BAT</td><td>Izravno spojen na priključak baterije. Smije se spojiti samo Li-ion baterija 3,7 V.</td></tr>
+  <tr><td>GND</td><td>Masa (0 V). Na pločici su tri izvoda GND i svi su međusobno spojeni.</td></tr>
+  <tr><td>RESET</td><td>Spajanjem na GND mikroupravljač se ponovno pokreće, isto kao pritiskom tipke RESET.</td></tr>
+</table></div>
+
+<h3>Digitalni izvodi</h3>
+<div class="table-scroll"><table class="data">
+  <tr><th>Izvod</th><th>Posebne funkcije</th><th>Napomena</th></tr>
+  <tr><td>D0 (oznaka TXD)</td><td>UART RX</td><td rowspan="2">Koristi ih USB veza s računalom (prijenos programa i Serial monitor). Na vježbama ih ne koristimo za LED diode i tipkala. Oznake TXD i RXD na pločici napisane su s gledišta USB čipa CH340C, zato je D0 označen kao TXD.</td></tr>
+  <tr><td>D1 (oznaka RXD)</td><td>UART TX</td></tr>
+  <tr><td>D2</td><td>vanjski prekid INT0</td><td></td></tr>
+  <tr><td>D3</td><td>PWM, vanjski prekid INT1</td><td></td></tr>
+  <tr><td>D4</td><td>–</td><td></td></tr>
+  <tr><td>D5</td><td>PWM</td><td></td></tr>
+  <tr><td>D6</td><td>PWM</td><td></td></tr>
+  <tr><td>D7</td><td>–</td><td>Na njega je spojena tipka USER. Pritisnuta tipka spaja D7 na GND.</td></tr>
+  <tr><td>D8</td><td>CLKO</td><td>Na njega je spojena RGB LED dioda WS2812B. Ako D8 koristite za nešto drugo, RGB dioda može neočekivano zasvijetliti.</td></tr>
+  <tr><td>D9</td><td>PWM</td><td></td></tr>
+  <tr><td>D10</td><td>PWM, SPI SS</td><td></td></tr>
+  <tr><td>D11</td><td>PWM, SPI MOSI</td><td></td></tr>
+  <tr><td>D12</td><td>SPI MISO</td><td></td></tr>
+  <tr><td>D13</td><td>SPI SCK</td><td>Na njega je spojena narančasta LED dioda D13.</td></tr>
+</table></div>
+
+<h3>Analogni izvodi</h3>
+<div class="table-scroll"><table class="data">
+  <tr><th>Izvod</th><th>Funkcija</th><th>Napomena</th></tr>
+  <tr><td>A0 – A3</td><td>analogni ulaz (ADC0 – ADC3) ili digitalni izvod</td><td>10-bitni A/D pretvornik: <code>analogRead()</code> vraća 0 – 1023 za napon 0 – 5 V.</td></tr>
+  <tr><td>A4</td><td>analogni ulaz ili I²C SDA</td><td rowspan="2">Isti vodovi idu i na priključak easyC. Ako koristite I²C modul, A4 i A5 ne koristite za druge namjene.</td></tr>
+  <tr><td>A5</td><td>analogni ulaz ili I²C SCL</td></tr>
+  <tr><td>A6, A7</td><td>samo analogni ulaz</td><td>Ne mogu se koristiti kao digitalni izvodi. Arduino UNO ih nema.</td></tr>
+</table></div>
+
+<h2 class="title">Elementi na pločici</h2>
+<div class="table-scroll"><table class="data">
+  <tr><th>Element</th><th>Opis</th></tr>
+  <tr><td>USB-C priključak</td><td>Napajanje, prijenos programa i serijska veza s računalom preko čipa CH340C.</td></tr>
+  <tr><td>Tipka RESET</td><td>Ponovno pokreće program od početka.</td></tr>
+  <tr><td>Tipka USER</td><td>Tipkalo za vlastite programe, spojeno na D7.</td></tr>
+  <tr><td>LED PWR (ljubičasta)</td><td>Svijetli kad pločica ima napajanje.</td></tr>
+  <tr><td>LED D13 (narančasta)</td><td>Spojena na D13; ista kao ugrađena LED dioda na Arduinu UNO.</td></tr>
+  <tr><td>RGB LED D8</td><td>Adresabilna LED dioda WS2812B na D8. Upravlja se bibliotekom, npr. Adafruit NeoPixel.</td></tr>
+  <tr><td>LED RXD i TXD (plava i bijela)</td><td>Trepću dok se prenosi program ili podaci preko USB-a.</td></tr>
+  <tr><td>LED CHRG (crvena)</td><td>Svijetli dok se baterija puni.</td></tr>
+  <tr><td>Priključak za bateriju</td><td>JST, dva kontakta, za Li-ion bateriju 3,7 V. Kad je spojen USB, pločica se napaja s USB-a i puni bateriju.</td></tr>
+  <tr><td>Priključak easyC</td><td>Soldered priključak za module s I²C sabirnicom (kompatibilan s Qwiic). Radi na 3,3 V, a pretvarač razina ga povezuje s A4 i A5.</td></tr>
+  <tr><td>Kratkospojnici JP1, JP2, JP3</td><td>JP1: prerezivanjem se isključuje LED PWR, npr. radi manje potrošnje na bateriji. JP2 i JP3: spajanjem se uključuju pull-up otpornici za I²C na strani 5 V (JP2) ili 3,3 V (JP3).</td></tr>
+</table></div>
+
+<h2 class="title">Programiranje u Arduino IDE</h2>
+<ol type="a">
+  <li>U <b>File → Preferences</b>, u polje <i>Additional boards manager URLs</i> dodajte adresu:<br><code class="url">https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/package_Dasduino_Boards_index.json</code></li>
+  <li>U <b>Tools → Board → Boards Manager</b> potražite <i>dasduino</i> i instalirajte paket <b>Dasduino AVR Boards</b>. U novijim paketima pločica se zove NULA CORE, pa instalirajte <b>NULA AVR Boards</b>.</li>
+  <li>U <b>Tools → Board</b> odaberite <b>Dasduino CORE (ATmega328P)</b>, odnosno <b>NULA CORE (ATmega328P)</b>.</li>
+  <li>Spojite pločicu USB-C kabelom i u <b>Tools → Port</b> odaberite njen COM priključak. Ako se priključak ne pojavi, instalirajte upravljački program za čip CH340.</li>
+</ol>
+
+<h2 class="title">Primjer: tipka USER i LED dioda D13</h2>
+<p>Program pali LED diodu D13 dok držite tipku USER. Za ovaj primjer ne treba spajati ništa, jer su obje komponente već na pločici. Tipka spaja D7 na GND, pa se koristi unutarnji pull-up otpornik (<code>INPUT_PULLUP</code>): otpuštena tipka daje <code>HIGH</code>, a pritisnuta <code>LOW</code>.</p>
+<div id="source">
+<pre>
+<span style="color: #CC6600;">const</span> <span style="color: #CC6600;">int</span> tipka = 7;               <span style="color: #7E7E7E;">//tipka USER je na D7</span>
+<span style="color: #CC6600;">const</span> <span style="color: #CC6600;">int</span> led = 13;                <span style="color: #7E7E7E;">//LED dioda D13</span>
+
+<span style="color: #CC6600;">void</span> <span style="color: #CC6600;"><b>setup</b></span>() {
+  <span style="color: #CC6600;">pinMode</span>(tipka, <span style="color: #006699;">INPUT_PULLUP</span>);    <span style="color: #7E7E7E;">//ulaz s unutarnjim pull-up otpornikom</span>
+  <span style="color: #CC6600;">pinMode</span>(led, <span style="color: #006699;">OUTPUT</span>);            <span style="color: #7E7E7E;">//izlaz za LED diodu</span>
+}
+
+<span style="color: #CC6600;">void</span> <span style="color: #CC6600;"><b>loop</b></span>() {
+  <span style="color: #CC6600;">if</span> (<span style="color: #CC6600;">digitalRead</span>(tipka) == <span style="color: #006699;">LOW</span>) { <span style="color: #7E7E7E;">//tipka pritisnuta</span>
+    <span style="color: #CC6600;">digitalWrite</span>(led, <span style="color: #006699;">HIGH</span>);        <span style="color: #7E7E7E;">//uključi LED diodu</span>
+  } <span style="color: #CC6600;">else</span> {
+    <span style="color: #CC6600;">digitalWrite</span>(led, <span style="color: #006699;">LOW</span>);         <span style="color: #7E7E7E;">//isključi LED diodu</span>
+  }
+}
+</pre>
+</div>
+
+<h2 class="title">Usporedba s Arduino UNO</h2>
+<div class="table-scroll"><table class="data">
+  <tr><th></th><th>Dasduino CORE</th><th>Arduino UNO R3</th></tr>
+  <tr><td>Mikroupravljač i takt</td><td>ATmega328P, 16 MHz</td><td>ATmega328P, 16 MHz</td></tr>
+  <tr><td>USB</td><td>USB-C, CH340C</td><td>USB-B, ATmega16U2</td></tr>
+  <tr><td>Analogni ulazi</td><td>8 (A0 – A7)</td><td>6 (A0 – A5)</td></tr>
+  <tr><td>Vanjsko napajanje</td><td>Li-ion baterija 3,7 V s punjačem</td><td>priključak 7 – 12 V</td></tr>
+  <tr><td>Na pločici</td><td>LED D13, RGB LED, tipka USER, easyC</td><td>LED D13</td></tr>
+  <tr><td>Veličina</td><td>63 × 22 mm, stane u eksperimentalnu pločicu</td><td>69 × 53 mm</td></tr>
+</table></div>
+<p>Sheme u zadacima nacrtane su za Arduino UNO. Kako su brojevi izvoda isti, vodič spojen na izvod 2 na Arduinu spojite na izvod D2 na Dasduinu, a GND na bilo koji od tri izvoda GND.</p>
+
 </article>
 <nav class="pager"><a class="prev" href="../index.html"><span>Prethodni</span>Predgovor</a><a class="next" href="p3-z1.html"><span>Sljedeći</span>1. Blinkanje LED diode</a></nav>
 <footer class="footer">Zadaci, sheme i rješenja: <a href="http://paolozenzerovic.info" target="_blank" rel="noopener">Paolo Zenzerović</a>, <i>Arduino kroz jednostavne primjere</i></footer>
