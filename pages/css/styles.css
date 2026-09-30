@@ -136,15 +136,15 @@ h1, .h1 { margin: 0; font-size: 36px; line-height: 1.2; font-weight: 700; color:
 
 /* Tablice */
 .tbl { border-collapse: collapse; margin: 20px 0 8px; font-size: 16px; }
-.tbl td { border: 1px solid var(--line-strong); padding: 6px 14px; text-align: center; }
+.tbl td { border: 1px solid #333; padding: 6px 14px; text-align: center; }
 .tbl tr:first-child td { background: var(--panel); font-weight: 600; }
 
 /* Podatkovne tablice i slike pločice (stranica Dasduino CORE) */
 .article h3 { margin: 28px 0 10px; font-size: 19px; color: var(--text); }
 .table-scroll { overflow-x: auto; margin: 8px 0 16px; }
-table.data { border-collapse: collapse; width: 100%; font-size: 16.5px; line-height: 1.45; }
-table.data th, table.data td { border: 1px solid var(--line-strong); padding: 7px 12px; text-align: left; vertical-align: top; }
-table.data th { background: var(--panel); font-weight: 600; }
+table.data { border-collapse: collapse; width: 100%; font-size: 16.5px; line-height: 1.45; border: 1px solid #333; }
+table.data th, table.data td { border: 1px solid #333; padding: 7px 12px; text-align: left; vertical-align: top; }
+table.data th { background: #eef0f3; font-weight: 600; }
 table.data tr > th:first-child { white-space: nowrap; }
 table.data td:first-child { white-space: nowrap; font-weight: 600; }
 table.data tr:first-child th { white-space: nowrap; }
