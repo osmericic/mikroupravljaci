@@ -114,7 +114,7 @@
   <tr><th>Baterija</th><td>priključak za Li-ion bateriju 3,7 V i punjač TP4056 (puni strujom oko 400 mA)</td></tr>
   <tr><th>Stabilizator</th><td>3,3 V za module koji rade na 3,3 V</td></tr>
   <tr><th>Komunikacija</th><td>UART, SPI, I²C (i preko priključka easyC)</td></tr>
-  <tr><th>Dimenzije</th><td>63 × 22 mm, 12 g</td></tr>
+  <tr><th>Dimenzije</th><td>63 × 25,9 mm, 12 g; redovi izvoda razmaknuti 22,86 mm (0,9 in)</td></tr>
 </table></div>
 
 <h2 class="title">Raspored izvoda</h2>
@@ -184,6 +184,15 @@
   <tr><td>Kratkospojnici JP1, JP2, JP3</td><td>JP1: prerezivanjem se isključuje LED PWR, npr. radi manje potrošnje na bateriji. JP2 i JP3: spajanjem se uključuju pull-up otpornici za I²C na strani 5 V (JP2) ili 3,3 V (JP3).</td></tr>
 </table></div>
 
+<h2 class="title">Fritzing dio</h2>
+<p>Za crtanje spojeva u programu Fritzing pripremljen je dio Dasduino CORE s prikazom pločice, shemom i PCB prikazom. Položaji izvoda preuzeti su iz Solderedovog KiCad projekta, pa izvodi točno sjedaju u rupe eksperimentalne pločice.</p>
+<div class="downloads"><a class="dl" href="fzz/Dasduino-CORE.fzpz" download><img src="images/fzz-icon.png" alt=""><span><b>Dasduino CORE</b>Fritzing dio .fzpz</span></a></div>
+<ol type="a">
+  <li>Preuzmite datoteku <code>Dasduino-CORE.fzpz</code>.</li>
+  <li>U Fritzingu odaberite <b>File → Open</b> i otvorite preuzetu datoteku, ili je mišem povucite u prozor Fritzinga.</li>
+  <li>Dio se pojavi u skupini <b>MINE</b> u popisu dijelova. Odatle ga povucite na eksperimentalnu pločicu kao i svaki drugi dio.</li>
+</ol>
+
 <h2 class="title">Programiranje u Arduino IDE</h2>
 <ol type="a">
   <li>U <b>File → Preferences</b>, u polje <i>Additional boards manager URLs</i> dodajte adresu:<br><code class="url">https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/package_Dasduino_Boards_index.json</code></li>
@@ -222,7 +231,7 @@
   <tr><td>Analogni ulazi</td><td>8 (A0 – A7)</td><td>6 (A0 – A5)</td></tr>
   <tr><td>Vanjsko napajanje</td><td>Li-ion baterija 3,7 V s punjačem</td><td>priključak 7 – 12 V</td></tr>
   <tr><td>Na pločici</td><td>LED D13, RGB LED, tipka USER, easyC</td><td>LED D13</td></tr>
-  <tr><td>Veličina</td><td>63 × 22 mm, stane u eksperimentalnu pločicu</td><td>69 × 53 mm</td></tr>
+  <tr><td>Veličina</td><td>63 × 25,9 mm, stane u eksperimentalnu pločicu</td><td>69 × 53 mm</td></tr>
 </table></div>
 <p>Sheme u zadacima nacrtane su za Arduino UNO. Kako su brojevi izvoda isti, vodič spojen na izvod 2 na Arduinu spojite na izvod D2 na Dasduinu, a GND na bilo koji od tri izvoda GND.</p>
 
