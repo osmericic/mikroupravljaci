@@ -3,8 +3,8 @@ int segB = 3;                	//definiraj seg_b = 3
 int segC = 4;                	//definiraj seg_c = 4 
 int segD = 5;                	//definiraj seg_d = 5 
 int segE = 6;                	//definiraj seg_e = 6 
-int segF = 7;                	//definiraj seg_f = 7 
-int segG = 8;                	//definiraj seg_g = 8  
+int segF = 9;                	//definiraj seg_f = 9 
+int segG = 10;               	//definiraj seg_g = 10  
 
 void setup() {   
 pinMode(segA, OUTPUT);       	//postavi izvod segA kao izlazni   
